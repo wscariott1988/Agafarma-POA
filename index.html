@@ -47,13 +47,21 @@
               Sua saúde e bem-estar em primeiro lugar. Cuidando da nossa comunidade <span class="text-agafarma-dark-blue font-bold">há 40 anos no bairro.</span>
             </p>
             
-            <div class="pt-4 flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-              <a href="#" class="bg-agafarma-yellow text-agafarma-dark-blue font-bold px-8 py-4 rounded-2xl hover:brightness-105 hover:shadow-lg transition-all transform hover:-translate-y-1 text-lg flex items-center justify-center gap-2">
-                <i class="ph-bold ph-moped text-xl"></i> Entrega Rápida Rubem Berta
-              </a>
-              <a href="#" class="bg-green-500 text-white font-bold px-8 py-4 rounded-2xl hover:bg-green-600 hover:shadow-lg transition-all transform hover:-translate-y-1 text-lg flex items-center justify-center gap-2">
-                <i class="ph-bold ph-whatsapp-logo text-xl"></i> Chamar no Whats
-              </a>
+            <div class="pt-4 flex flex-col items-center md:items-start gap-4">
+              <!-- Botão Principal -->
+              <button onclick="document.getElementById('hero-store-options').classList.remove('hidden'); document.getElementById('hero-store-options').classList.add('flex'); this.classList.add('hidden')" class="bg-agafarma-yellow text-agafarma-dark-blue font-bold px-8 py-4 rounded-2xl hover:brightness-105 hover:shadow-lg transition-all transform hover:-translate-y-1 text-lg flex items-center justify-center gap-2 w-full sm:w-auto">
+                <i class="ph-bold ph-moped text-xl"></i> Faça seu pedido agora
+              </button>
+              
+              <!-- Botões das Lojas (Ocultos inicialmente) -->
+              <div id="hero-store-options" class="hidden flex-col sm:flex-row gap-4 justify-center md:justify-start w-full sm:w-auto">
+                <a href="#" class="bg-green-500 text-white font-bold px-8 py-4 rounded-2xl hover:bg-green-600 hover:shadow-lg transition-all transform hover:-translate-y-1 text-lg flex items-center justify-center gap-2 flex-1">
+                  <i class="ph-bold ph-whatsapp-logo text-xl"></i> Loja 1910
+                </a>
+                <a href="#" class="bg-green-500 text-white font-bold px-8 py-4 rounded-2xl hover:bg-green-600 hover:shadow-lg transition-all transform hover:-translate-y-1 text-lg flex items-center justify-center gap-2 flex-1">
+                  <i class="ph-bold ph-whatsapp-logo text-xl"></i> Loja 2630
+                </a>
+              </div>
             </div>
           </div>
           
@@ -250,7 +258,7 @@
     <footer class="bg-agafarma-dark-blue text-white py-12 px-6">
       <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         <div class="flex items-center gap-2">
-          <img src="/Logo-Agafarma.webp" alt="Agafarma" class="h-8 filter brightness-0 invert" />
+          <img src="/logoazul.webp" alt="Agafarma" class="h-10 object-contain bg-white rounded-xl px-2 py-1" />
         </div>
         <p class="text-blue-100 text-sm text-center md:text-left">
           &copy; 2024 Farmácia Agafarma Mário Quintana. Todos os direitos reservados.
