@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --color-agafarma-blue: #00549A;
+  --color-agafarma-yellow: #FDB913;
+  --color-agafarma-red: #E3000F;
+  --color-agafarma-light: #F4F7F6;
+  
+  --font-sans: 'Inter', system-ui, sans-serif;
+  
+  --radius-4xl: 2rem;
+  --radius-5xl: 2.5rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--color-agafarma-light);
+  color: #333333;
+}
