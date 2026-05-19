@@ -11,26 +11,26 @@
   <body class="antialiased text-agafarma-blue bg-agafarma-bg">
     
     <!-- HEADER -->
-    <header class="fixed top-0 left-0 w-full bg-agafarma-yellow text-agafarma-dark-blue shadow-md z-50 transition-all duration-300">
-      <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 pt-4 px-4">
+      <div class="max-w-7xl mx-auto bg-agafarma-blue text-white rounded-full px-8 h-20 flex items-center justify-between shadow-lg">
         <a href="#" class="flex items-center gap-2">
-          <img src="/Logo-Agafarma.webp" alt="Agafarma" class="h-10 md:h-12 w-auto object-contain" />
+          <img src="/logoazul.webp" alt="Agafarma" class="h-10 md:h-12 w-auto object-contain bg-white rounded-xl px-2 py-1" />
         </a>
 
         <nav class="hidden md:flex gap-8 font-bold">
-          <a href="#diferenciais" class="hover:text-agafarma-blue transition-colors">Diferenciais</a>
-          <a href="#tele-entrega" class="hover:text-agafarma-blue transition-colors">Tele-entrega</a>
-          <a href="#cartao" class="hover:text-agafarma-blue transition-colors">Cartão Agafarma</a>
-          <a href="#localizacao" class="hover:text-agafarma-blue transition-colors">Localização</a>
+          <a href="#diferenciais" class="hover:text-agafarma-yellow transition-colors">Diferenciais</a>
+          <a href="#tele-entrega" class="hover:text-agafarma-yellow transition-colors">Tele-entrega</a>
+          <a href="#cartao" class="hover:text-agafarma-yellow transition-colors">Cartão Agafarma</a>
+          <a href="#localizacao" class="hover:text-agafarma-yellow transition-colors">Localização</a>
         </nav>
 
-        <button class="md:hidden text-3xl focus:outline-none">
+        <button class="md:hidden text-3xl text-white focus:outline-none">
           <i class="ph ph-list"></i>
         </button>
       </div>
     </header>
 
-    <main class="pt-20">
+    <main class="pt-32">
 
       <!-- HERO SECTION -->
       <section class="relative bg-white pt-12 pb-24 px-6 rounded-b-[3rem] shadow-sm">
@@ -285,12 +285,12 @@
     
     <!-- Script for mobile menu and header scroll -->
     <script>
-      const header = document.querySelector('header');
+      const headerDiv = document.querySelector('header > div');
       window.addEventListener('scroll', () => {
         if (window.scrollY > 20) {
-          header.classList.add('shadow-lg', 'bg-opacity-95', 'backdrop-blur-sm');
+          headerDiv.classList.add('bg-opacity-95', 'backdrop-blur-sm');
         } else {
-          header.classList.remove('shadow-lg', 'bg-opacity-95', 'backdrop-blur-sm');
+          headerDiv.classList.remove('bg-opacity-95', 'backdrop-blur-sm');
         }
       });
     </script>
