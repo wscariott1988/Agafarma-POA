@@ -11,26 +11,34 @@
   <body class="antialiased text-agafarma-blue bg-agafarma-bg">
     
     <!-- HEADER -->
-    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 pt-4 px-4">
-      <div class="max-w-7xl mx-auto bg-agafarma-blue text-white rounded-full px-8 h-20 flex items-center justify-between shadow-lg">
-        <a href="#" class="flex items-center gap-2">
-          <img src="/logoazul.webp" alt="Agafarma" class="h-10 md:h-12 w-auto object-contain bg-white rounded-xl px-2 py-1" />
-        </a>
+    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+      <!-- Faixa Amarela -->
+      <div class="bg-agafarma-yellow w-full h-24 flex items-start pt-5 px-6 relative z-0">
+        <div class="max-w-7xl mx-auto w-full flex justify-center md:justify-start">
+          <a href="#" class="flex items-center gap-2">
+            <img src="/Logo-Agafarma.webp" alt="Agafarma" class="h-10 md:h-12 w-auto object-contain" />
+          </a>
+        </div>
+      </div>
 
-        <nav class="hidden md:flex gap-8 font-bold">
-          <a href="#diferenciais" class="hover:text-agafarma-yellow transition-colors">Diferenciais</a>
-          <a href="#tele-entrega" class="hover:text-agafarma-yellow transition-colors">Tele-entrega</a>
-          <a href="#cartao" class="hover:text-agafarma-yellow transition-colors">Cartão Agafarma</a>
-          <a href="#localizacao" class="hover:text-agafarma-yellow transition-colors">Localização</a>
-        </nav>
+      <!-- Card Flutuante Azul (Menu) -->
+      <div class="max-w-5xl mx-auto px-4 relative z-10 -mt-5">
+        <div class="bg-[#0075B1] text-white rounded-full h-14 flex items-center justify-between shadow-lg px-8">
+          <nav class="hidden md:flex gap-8 font-bold w-full justify-center">
+            <a href="#diferenciais" class="hover:text-agafarma-yellow transition-colors">Diferenciais</a>
+            <a href="#tele-entrega" class="hover:text-agafarma-yellow transition-colors">Tele-entrega</a>
+            <a href="#cartao" class="hover:text-agafarma-yellow transition-colors">Cartão Agafarma</a>
+            <a href="#localizacao" class="hover:text-agafarma-yellow transition-colors">Localização</a>
+          </nav>
 
-        <button class="md:hidden text-3xl text-white focus:outline-none">
-          <i class="ph ph-list"></i>
-        </button>
+          <button class="md:hidden text-2xl text-white focus:outline-none w-full flex justify-center items-center gap-2 font-bold">
+            <i class="ph ph-list"></i> Menu
+          </button>
+        </div>
       </div>
     </header>
 
-    <main class="pt-32">
+    <main class="pt-40">
 
       <!-- HERO SECTION -->
       <section class="relative bg-white pt-12 pb-24 px-6 rounded-b-[3rem] shadow-sm">
@@ -258,7 +266,7 @@
     <footer class="bg-agafarma-dark-blue text-white py-12 px-6">
       <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         <div class="flex items-center gap-2">
-          <img src="/logoazul.webp" alt="Agafarma" class="h-10 object-contain bg-white rounded-xl px-2 py-1" />
+          <img src="/logoazul.webp" alt="Agafarma" class="h-16 md:h-20 object-contain" />
         </div>
         <p class="text-blue-100 text-sm text-center md:text-left">
           &copy; 2024 Farmácia Agafarma Mário Quintana. Todos os direitos reservados.
@@ -285,12 +293,12 @@
     
     <!-- Script for mobile menu and header scroll -->
     <script>
-      const headerDiv = document.querySelector('header > div');
+      const header = document.querySelector('header');
       window.addEventListener('scroll', () => {
         if (window.scrollY > 20) {
-          headerDiv.classList.add('bg-opacity-95', 'backdrop-blur-sm');
+          header.classList.add('shadow-md', 'bg-opacity-95');
         } else {
-          headerDiv.classList.remove('bg-opacity-95', 'backdrop-blur-sm');
+          header.classList.remove('shadow-md', 'bg-opacity-95');
         }
       });
     </script>
