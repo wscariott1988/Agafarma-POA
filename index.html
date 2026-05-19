@@ -11,7 +11,7 @@
   <body class="antialiased text-agafarma-blue bg-agafarma-bg">
     
     <!-- HEADER -->
-    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+    <header class="absolute top-0 left-0 w-full z-50 transition-all duration-300">
       <!-- Faixa Amarela -->
       <div class="bg-agafarma-yellow w-full h-24 flex items-start pt-5 px-6 relative z-0">
         <div class="max-w-7xl mx-auto w-full flex justify-center md:justify-start">
@@ -23,7 +23,8 @@
 
       <!-- Card Flutuante Azul (Menu) -->
       <div class="max-w-5xl mx-auto px-4 relative z-10 -mt-5">
-        <div class="bg-[#0075B1] text-white rounded-full h-14 flex items-center justify-between shadow-lg px-8">
+        <div class="bg-[#0075B1] text-white rounded-full h-14 flex items-center shadow-lg px-8">
+          <!-- Menu Desktop -->
           <nav class="hidden md:flex gap-8 font-bold w-full justify-center">
             <a href="#diferenciais" class="hover:text-agafarma-yellow transition-colors">Diferenciais</a>
             <a href="#tele-entrega" class="hover:text-agafarma-yellow transition-colors">Tele-entrega</a>
@@ -31,10 +32,21 @@
             <a href="#localizacao" class="hover:text-agafarma-yellow transition-colors">Localização</a>
           </nav>
 
-          <button class="md:hidden text-2xl text-white focus:outline-none w-full flex justify-center items-center gap-2 font-bold">
-            <i class="ph ph-list"></i> Menu
-          </button>
+          <!-- Menu Mobile Toggle -->
+          <div class="md:hidden w-full flex justify-end">
+            <button onclick="toggleMobileMenu()" class="text-2xl text-white focus:outline-none flex items-center justify-center">
+              <i class="ph ph-list"></i>
+            </button>
+          </div>
         </div>
+        
+        <!-- Mobile Dropdown Menu -->
+        <nav id="mobile-menu" class="hidden md:hidden bg-[#0075B1] mt-2 rounded-2xl shadow-xl flex-col overflow-hidden transition-all duration-300 transform origin-top scale-y-0 opacity-0 absolute left-4 right-4 z-20">
+          <a href="#diferenciais" onclick="toggleMobileMenu()" class="text-white font-bold py-4 px-6 border-b border-blue-400 hover:bg-agafarma-dark-blue transition-colors">Diferenciais</a>
+          <a href="#tele-entrega" onclick="toggleMobileMenu()" class="text-white font-bold py-4 px-6 border-b border-blue-400 hover:bg-agafarma-dark-blue transition-colors">Tele-entrega</a>
+          <a href="#cartao" onclick="toggleMobileMenu()" class="text-white font-bold py-4 px-6 border-b border-blue-400 hover:bg-agafarma-dark-blue transition-colors">Cartão Agafarma</a>
+          <a href="#localizacao" onclick="toggleMobileMenu()" class="text-white font-bold py-4 px-6 hover:bg-agafarma-dark-blue transition-colors">Localização</a>
+        </nav>
       </div>
     </header>
 
@@ -57,9 +69,9 @@
             
             <div class="pt-4 flex flex-col items-center md:items-start gap-4">
               <!-- Botão Principal -->
-              <button onclick="openStoreModal()" class="bg-agafarma-yellow text-agafarma-dark-blue font-bold px-8 py-4 rounded-2xl hover:brightness-105 hover:shadow-lg transition-all transform hover:-translate-y-1 text-lg flex items-center justify-center gap-2 w-full sm:w-auto">
+              <a href="https://wa.me/555133815232?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20um%20pedido%20para%20entrega." target="_blank" class="bg-agafarma-yellow text-agafarma-dark-blue font-bold px-8 py-4 rounded-2xl hover:brightness-105 hover:shadow-lg transition-all transform hover:-translate-y-1 text-lg flex items-center justify-center gap-2 w-full sm:w-auto">
                 <i class="ph-bold ph-moped text-xl"></i> Faça seu pedido agora
-              </button>
+              </a>
             </div>
           </div>
           
@@ -136,9 +148,9 @@
           </div>
           
           <div class="z-10">
-             <button onclick="openStoreModal()" class="bg-green-500 text-white font-bold px-8 py-4 rounded-2xl hover:bg-green-600 transition-colors shadow-md text-lg flex items-center gap-2 whitespace-nowrap cursor-pointer">
+             <a href="https://wa.me/555133815232?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20um%20pedido%20na%20tele-entrega." target="_blank" class="bg-green-500 text-white font-bold px-8 py-4 rounded-2xl hover:bg-green-600 transition-colors shadow-md text-lg flex items-center gap-2 whitespace-nowrap cursor-pointer">
                 <i class="ph-bold ph-whatsapp-logo text-xl"></i> Pedir Agora
-              </button>
+              </a>
           </div>
         </div>
       </section>
@@ -171,9 +183,9 @@
             </ul>
 
             <div class="flex justify-center md:justify-start">
-              <button onclick="openStoreModal()" class="bg-agafarma-blue text-white font-bold px-8 py-4 rounded-2xl hover:bg-agafarma-dark-blue transition-colors flex items-center gap-2 cursor-pointer">
+              <a href="https://wa.me/555133815232?text=Ol%C3%A1!%20Quero%20saber%20mais%20sobre%20o%20Cart%C3%A3o%20Agafarma." target="_blank" class="bg-agafarma-blue text-white font-bold px-8 py-4 rounded-2xl hover:bg-agafarma-dark-blue transition-colors flex items-center gap-2 cursor-pointer">
                 <i class="ph-bold ph-whatsapp-logo text-2xl"></i> Quero saber mais no Whatsapp
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -186,9 +198,9 @@
             <div class="inline-block p-4 bg-yellow-50 rounded-3xl text-agafarma-yellow text-4xl mb-6">
               <i class="ph-fill ph-map-pin"></i>
             </div>
-            <h2 class="text-3xl md:text-4xl font-bold text-agafarma-dark-blue mb-6">Nossas Lojas</h2>
+            <h2 class="text-3xl md:text-4xl font-bold text-agafarma-dark-blue mb-6">Nossa Loja</h2>
             <p class="text-gray-600 text-lg mb-8">
-              Duas unidades no bairro Mário Quintana para melhor lhe atender, ou peça no conforto de casa pelo nosso WhatsApp.
+              Localizada no bairro Mário Quintana para melhor lhe atender, ou peça no conforto de casa pelo nosso WhatsApp.
             </p>
             
             <div class="space-y-8 text-left">
@@ -197,12 +209,8 @@
                 <i class="ph-bold ph-storefront text-2xl text-agafarma-blue mt-1"></i>
                 <div class="space-y-4">
                   <div>
-                    <h4 class="font-bold text-agafarma-dark-blue text-lg">Loja 1</h4>
+                    <h4 class="font-bold text-agafarma-dark-blue text-lg">Unidade Principal</h4>
                     <p class="text-gray-600">Av. Martim Félix Berta, 1910<br>Mário Quintana - Porto Alegre<br>CEP 91.250-200</p>
-                  </div>
-                  <div>
-                    <h4 class="font-bold text-agafarma-dark-blue text-lg">Loja 2</h4>
-                    <p class="text-gray-600">Av. Martim Félix Berta, 2630<br>Mário Quintana - Porto Alegre</p>
                   </div>
                 </div>
               </div>
@@ -224,7 +232,7 @@
                 <i class="ph-bold ph-phone text-2xl text-agafarma-blue mt-1"></i>
                 <div>
                   <h4 class="font-bold text-agafarma-dark-blue text-lg">Contato / Tele-entrega</h4>
-                  <p class="text-gray-600 text-xl font-bold mt-1 text-green-600">(51) 3381.5400</p>
+                  <p class="text-gray-600 text-xl font-bold mt-1 text-green-600">(51) 3381.5232</p>
                 </div>
               </div>
             </div>
@@ -275,31 +283,10 @@
     <!-- FAB WHATSAPP -->
     <div class="fixed bottom-6 right-6 z-50 flex items-center justify-center">
       <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
-      <button onclick="openStoreModal()"
+      <a href="https://wa.me/555133815232?text=Ol%C3%A1!%20Gostaria%20de%20atendimento." target="_blank"
          class="relative w-16 h-16 bg-green-500 text-white rounded-full flex items-center justify-center text-4xl shadow-[0_10px_20px_rgba(34,197,94,0.4)] hover:bg-green-600 hover:scale-110 transition-transform duration-300 cursor-pointer">
         <i class="ph-fill ph-whatsapp-logo"></i>
-      </button>
-    </div>
-
-    <!-- MODAL ESCOLHER LOJA -->
-    <div id="store-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/60 backdrop-blur-sm transition-opacity opacity-0 px-4">
-      <div class="bg-white rounded-3xl p-8 max-w-sm w-full shadow-2xl transform scale-95 transition-transform duration-300 relative">
-        <button onclick="closeStoreModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800 text-2xl transition-colors">
-          <i class="ph-bold ph-x"></i>
-        </button>
-        
-        <h3 class="text-2xl font-bold text-agafarma-dark-blue mb-2 text-center">Fazer Pedido</h3>
-        <p class="text-gray-600 text-center mb-6 font-medium">Escolha qual loja você deseja contatar no WhatsApp:</p>
-        
-        <div class="flex flex-col gap-4">
-          <a href="#" target="_blank" class="bg-green-500 text-white font-bold px-6 py-4 rounded-2xl hover:bg-green-600 shadow-md transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3 text-lg">
-            <i class="ph-bold ph-whatsapp-logo text-2xl"></i> Loja 1910
-          </a>
-          <a href="#" target="_blank" class="bg-green-500 text-white font-bold px-6 py-4 rounded-2xl hover:bg-green-600 shadow-md transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3 text-lg">
-            <i class="ph-bold ph-whatsapp-logo text-2xl"></i> Loja 2630
-          </a>
-        </div>
-      </div>
+      </a>
     </div>
 
     <!-- Script to connect Vite JS -->
@@ -307,37 +294,23 @@
     
     <!-- Script for mobile menu and header scroll -->
     <script>
-      const header = document.querySelector('header');
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 20) {
-          header.classList.add('shadow-md', 'bg-opacity-95');
+      function toggleMobileMenu() {
+        const menu = document.getElementById('mobile-menu');
+        
+        if (menu.classList.contains('hidden')) {
+          menu.classList.remove('hidden');
+          // Pequeno delay para a transição do tailwind funcionar
+          setTimeout(() => {
+            menu.classList.remove('scale-y-0', 'opacity-0');
+            menu.classList.add('scale-y-100', 'opacity-100');
+          }, 10);
         } else {
-          header.classList.remove('shadow-md', 'bg-opacity-95');
+          menu.classList.remove('scale-y-100', 'opacity-100');
+          menu.classList.add('scale-y-0', 'opacity-0');
+          setTimeout(() => {
+            menu.classList.add('hidden');
+          }, 300);
         }
-      });
-
-      // Funções do Modal de Lojas
-      function openStoreModal() {
-        const modal = document.getElementById('store-modal');
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-        // Pequeno delay para a animação CSS funcionar
-        setTimeout(() => {
-          modal.classList.remove('opacity-0');
-          modal.firstElementChild.classList.remove('scale-95');
-          modal.firstElementChild.classList.add('scale-100');
-        }, 10);
-      }
-
-      function closeStoreModal() {
-        const modal = document.getElementById('store-modal');
-        modal.classList.add('opacity-0');
-        modal.firstElementChild.classList.remove('scale-100');
-        modal.firstElementChild.classList.add('scale-95');
-        setTimeout(() => {
-          modal.classList.add('hidden');
-          modal.classList.remove('flex');
-        }, 300);
       }
     </script>
   </body>
