@@ -140,7 +140,7 @@
       <!-- CARTÃO AGAFARMA -->
       <section id="cartao" class="py-24 px-6 max-w-7xl mx-auto">
         <div class="bg-white rounded-[3rem] overflow-hidden shadow-sm flex flex-col md:flex-row items-center border border-gray-100">
-          <div class="flex-1 w-full bg-agafarma-bg p-8 md:p-12 flex items-center justify-center">
+          <div class="flex-1 w-full bg-[#0075B1] p-8 md:p-12 flex items-center justify-center">
             <!-- Imagem Oficial do Cartão -->
             <img src="/cartao-agafarma.webp" alt="Cartão Agafarma" class="w-full max-w-sm h-auto transform hover:scale-105 transition-transform duration-500" />
           </div>
@@ -224,14 +224,21 @@
             </div>
           </div>
           
-          <div class="flex-1 w-full h-[500px] bg-gray-200 rounded-3xl overflow-hidden shadow-inner relative mt-8 lg:mt-0">
-            <!-- Frame de mapa falso/placeholder -->
-            <div class="absolute inset-0 flex items-center justify-center bg-agafarma-bg border-4 border-white rounded-3xl">
-              <div class="text-center text-agafarma-blue p-6">
-                <i class="ph-fill ph-map-trifold text-6xl mb-4"></i>
-                <p class="font-medium text-lg">Aqui entrará o mapa com a marcação das 2 lojas.</p>
-                <p class="text-sm text-gray-500 mt-2">(Adicionar Iframe do Google Maps na versão final)</p>
-              </div>
+          <div class="flex-1 w-full flex items-center justify-center relative mt-8 lg:mt-0">
+            <!-- Imagem exibida no mobile -->
+            <img src="/logoazul.webp" alt="Agafarma Logo" class="block lg:hidden w-full max-w-xs h-auto object-contain py-8" />
+
+            <!-- Mapa exibido no desktop -->
+            <div class="hidden lg:block w-full h-[500px] bg-gray-200 rounded-3xl overflow-hidden shadow-inner relative">
+              <iframe 
+                src="https://maps.google.com/maps?q=Farm%C3%A1cia%20Agafarma,%20Av.%20Martim%20F%C3%A9lix%20Berta,%20Porto%20Alegre&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                width="100%" 
+                height="100%" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
             </div>
           </div>
         </div>
