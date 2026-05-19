@@ -57,19 +57,9 @@
             
             <div class="pt-4 flex flex-col items-center md:items-start gap-4">
               <!-- Botão Principal -->
-              <button onclick="document.getElementById('hero-store-options').classList.remove('hidden'); document.getElementById('hero-store-options').classList.add('flex'); this.classList.add('hidden')" class="bg-agafarma-yellow text-agafarma-dark-blue font-bold px-8 py-4 rounded-2xl hover:brightness-105 hover:shadow-lg transition-all transform hover:-translate-y-1 text-lg flex items-center justify-center gap-2 w-full sm:w-auto">
+              <button onclick="openStoreModal()" class="bg-agafarma-yellow text-agafarma-dark-blue font-bold px-8 py-4 rounded-2xl hover:brightness-105 hover:shadow-lg transition-all transform hover:-translate-y-1 text-lg flex items-center justify-center gap-2 w-full sm:w-auto">
                 <i class="ph-bold ph-moped text-xl"></i> Faça seu pedido agora
               </button>
-              
-              <!-- Botões das Lojas (Ocultos inicialmente) -->
-              <div id="hero-store-options" class="hidden flex-col sm:flex-row gap-4 justify-center md:justify-start w-full sm:w-auto">
-                <a href="#" class="bg-green-500 text-white font-bold px-8 py-4 rounded-2xl hover:bg-green-600 hover:shadow-lg transition-all transform hover:-translate-y-1 text-lg flex items-center justify-center gap-2 flex-1">
-                  <i class="ph-bold ph-whatsapp-logo text-xl"></i> Loja 1910
-                </a>
-                <a href="#" class="bg-green-500 text-white font-bold px-8 py-4 rounded-2xl hover:bg-green-600 hover:shadow-lg transition-all transform hover:-translate-y-1 text-lg flex items-center justify-center gap-2 flex-1">
-                  <i class="ph-bold ph-whatsapp-logo text-xl"></i> Loja 2630
-                </a>
-              </div>
             </div>
           </div>
           
@@ -146,9 +136,9 @@
           </div>
           
           <div class="z-10">
-             <a href="#" class="bg-green-500 text-white font-bold px-8 py-4 rounded-2xl hover:bg-green-600 transition-colors shadow-md text-lg flex items-center gap-2 whitespace-nowrap">
+             <button onclick="openStoreModal()" class="bg-green-500 text-white font-bold px-8 py-4 rounded-2xl hover:bg-green-600 transition-colors shadow-md text-lg flex items-center gap-2 whitespace-nowrap cursor-pointer">
                 <i class="ph-bold ph-whatsapp-logo text-xl"></i> Pedir Agora
-              </a>
+              </button>
           </div>
         </div>
       </section>
@@ -181,9 +171,9 @@
             </ul>
 
             <div class="flex justify-center md:justify-start">
-              <a href="#" class="bg-agafarma-blue text-white font-bold px-8 py-4 rounded-2xl hover:bg-agafarma-dark-blue transition-colors inline-block">
-                Fazer meu Cartão
-              </a>
+              <button onclick="openStoreModal()" class="bg-agafarma-blue text-white font-bold px-8 py-4 rounded-2xl hover:bg-agafarma-dark-blue transition-colors flex items-center gap-2 cursor-pointer">
+                <i class="ph-bold ph-whatsapp-logo text-2xl"></i> Quero saber mais no Whatsapp
+              </button>
             </div>
           </div>
         </div>
@@ -263,7 +253,7 @@
     </main>
 
     <!-- RODAPÉ -->
-    <footer class="bg-agafarma-dark-blue text-white py-12 px-6">
+    <footer class="bg-[#0068A0] text-white py-12 px-6">
       <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         <div class="flex items-center gap-2">
           <img src="/logoazul.webp" alt="Agafarma" class="h-16 md:h-20 object-contain" />
@@ -283,10 +273,34 @@
     </footer>
 
     <!-- FAB WHATSAPP -->
-    <a href="#"
-       class="fixed bottom-6 right-6 w-16 h-16 bg-green-500 text-white rounded-full flex items-center justify-center text-4xl shadow-[0_10px_20px_rgba(34,197,94,0.4)] hover:bg-green-600 hover:scale-110 transition-transform duration-300 z-50">
-      <i class="ph-fill ph-whatsapp-logo"></i>
-    </a>
+    <div class="fixed bottom-6 right-6 z-50 flex items-center justify-center">
+      <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
+      <button onclick="openStoreModal()"
+         class="relative w-16 h-16 bg-green-500 text-white rounded-full flex items-center justify-center text-4xl shadow-[0_10px_20px_rgba(34,197,94,0.4)] hover:bg-green-600 hover:scale-110 transition-transform duration-300 cursor-pointer">
+        <i class="ph-fill ph-whatsapp-logo"></i>
+      </button>
+    </div>
+
+    <!-- MODAL ESCOLHER LOJA -->
+    <div id="store-modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-black/60 backdrop-blur-sm transition-opacity opacity-0 px-4">
+      <div class="bg-white rounded-3xl p-8 max-w-sm w-full shadow-2xl transform scale-95 transition-transform duration-300 relative">
+        <button onclick="closeStoreModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-800 text-2xl transition-colors">
+          <i class="ph-bold ph-x"></i>
+        </button>
+        
+        <h3 class="text-2xl font-bold text-agafarma-dark-blue mb-2 text-center">Fazer Pedido</h3>
+        <p class="text-gray-600 text-center mb-6 font-medium">Escolha qual loja você deseja contatar no WhatsApp:</p>
+        
+        <div class="flex flex-col gap-4">
+          <a href="#" target="_blank" class="bg-green-500 text-white font-bold px-6 py-4 rounded-2xl hover:bg-green-600 shadow-md transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3 text-lg">
+            <i class="ph-bold ph-whatsapp-logo text-2xl"></i> Loja 1910
+          </a>
+          <a href="#" target="_blank" class="bg-green-500 text-white font-bold px-6 py-4 rounded-2xl hover:bg-green-600 shadow-md transition-all transform hover:-translate-y-1 flex items-center justify-center gap-3 text-lg">
+            <i class="ph-bold ph-whatsapp-logo text-2xl"></i> Loja 2630
+          </a>
+        </div>
+      </div>
+    </div>
 
     <!-- Script to connect Vite JS -->
     <script type="module" src="/main.js"></script>
@@ -301,6 +315,30 @@
           header.classList.remove('shadow-md', 'bg-opacity-95');
         }
       });
+
+      // Funções do Modal de Lojas
+      function openStoreModal() {
+        const modal = document.getElementById('store-modal');
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+        // Pequeno delay para a animação CSS funcionar
+        setTimeout(() => {
+          modal.classList.remove('opacity-0');
+          modal.firstElementChild.classList.remove('scale-95');
+          modal.firstElementChild.classList.add('scale-100');
+        }, 10);
+      }
+
+      function closeStoreModal() {
+        const modal = document.getElementById('store-modal');
+        modal.classList.add('opacity-0');
+        modal.firstElementChild.classList.remove('scale-100');
+        modal.firstElementChild.classList.add('scale-95');
+        setTimeout(() => {
+          modal.classList.add('hidden');
+          modal.classList.remove('flex');
+        }, 300);
+      }
     </script>
   </body>
 </html>
