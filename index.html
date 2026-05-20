@@ -124,6 +124,47 @@
         </div>
       </section>
 
+      <!-- OFERTAS E PRODUTOS (CARROSSEL) -->
+      <section id="ofertas" class="py-16 px-6 max-w-7xl mx-auto mb-12">
+        <div class="text-center mb-10">
+          <h2 class="text-3xl md:text-4xl font-bold text-agafarma-dark-blue mb-4">Ofertas Especiais</h2>
+          <p class="text-gray-600 max-w-2xl mx-auto text-lg">Confira nossos produtos em destaque para você.</p>
+        </div>
+
+        <div class="relative w-full max-w-5xl mx-auto">
+          <!-- Botoes de Navegação -->
+          <button id="prev-btn" class="absolute left-2 md:-left-6 top-1/2 -translate-y-1/2 z-10 bg-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center text-agafarma-blue hover:text-agafarma-dark-blue hover:bg-gray-100 transition focus:outline-none">
+            <i class="ph-bold ph-caret-left text-2xl"></i>
+          </button>
+          <button id="next-btn" class="absolute right-2 md:-right-6 top-1/2 -translate-y-1/2 z-10 bg-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center text-agafarma-blue hover:text-agafarma-dark-blue hover:bg-gray-100 transition focus:outline-none">
+            <i class="ph-bold ph-caret-right text-2xl"></i>
+          </button>
+
+          <!-- Wrapper do Carrossel -->
+          <div id="carousel-track" class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 scroll-smooth" style="scrollbar-width: none; -ms-overflow-style: none;">
+            <style>
+              #carousel-track::-webkit-scrollbar { display: none; }
+            </style>
+            <!-- Cards (5 imagens disponiveis) -->
+            <div class="flex-none w-full md:w-[calc(33.333%-11px)] snap-center md:snap-start rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow bg-white border border-gray-100">
+              <img src="/Produto-_1_.webp" alt="Oferta 1" class="w-full h-auto object-cover aspect-square" />
+            </div>
+            <div class="flex-none w-full md:w-[calc(33.333%-11px)] snap-center md:snap-start rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow bg-white border border-gray-100">
+              <img src="/Produto-_2_.webp" alt="Oferta 2" class="w-full h-auto object-cover aspect-square" />
+            </div>
+            <div class="flex-none w-full md:w-[calc(33.333%-11px)] snap-center md:snap-start rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow bg-white border border-gray-100">
+              <img src="/Produto-_3_.webp" alt="Oferta 3" class="w-full h-auto object-cover aspect-square" />
+            </div>
+            <div class="flex-none w-full md:w-[calc(33.333%-11px)] snap-center md:snap-start rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow bg-white border border-gray-100">
+              <img src="/Produto-_4_.webp" alt="Oferta 4" class="w-full h-auto object-cover aspect-square" />
+            </div>
+            <div class="flex-none w-full md:w-[calc(33.333%-11px)] snap-center md:snap-start rounded-3xl overflow-hidden shadow-sm hover:shadow-md transition-shadow bg-white border border-gray-100">
+              <img src="/Produto-_5_.webp" alt="Oferta 5" class="w-full h-auto object-cover aspect-square" />
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- TELE-ENTREGA DESTAQUE -->
       <section id="tele-entrega" class="py-8 px-6 max-w-5xl mx-auto mb-24">
         <div class="bg-agafarma-dark-blue rounded-[3rem] p-8 md:p-12 shadow-lg flex flex-col md:flex-row items-center gap-8 justify-between relative overflow-hidden">
@@ -211,10 +252,16 @@
                   <div>
                     <h4 class="font-bold text-agafarma-dark-blue text-lg">Loja 1</h4>
                     <p class="text-gray-600">Av. Martim Félix Berta, 1910<br>Mário Quintana - Porto Alegre<br>CEP 91.250-200</p>
+                    <a href="tel:+555133815232" class="inline-flex items-center gap-2 mt-2 text-agafarma-blue font-bold hover:text-agafarma-dark-blue transition-colors">
+                      <i class="ph-fill ph-phone"></i> (51) 3381.5232
+                    </a>
                   </div>
                   <div>
                     <h4 class="font-bold text-agafarma-dark-blue text-lg">Loja 2</h4>
                     <p class="text-gray-600">Av. Martim Félix Berta, 2630<br>Rubem Berta - Porto Alegre/RS<br>CEP 91.270-650</p>
+                    <a href="tel:+555133815400" class="inline-flex items-center gap-2 mt-2 text-agafarma-blue font-bold hover:text-agafarma-dark-blue transition-colors">
+                      <i class="ph-fill ph-phone"></i> (51) 3381.5400
+                    </a>
                   </div>
                 </div>
               </div>
@@ -316,6 +363,67 @@
           }, 300);
         }
       }
+
+      // Lógica do Carrossel de Ofertas
+      document.addEventListener('DOMContentLoaded', () => {
+        const track = document.getElementById('carousel-track');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        
+        if (!track || !prevBtn || !nextBtn) return;
+
+        let autoPlayInterval;
+
+        const getScrollAmount = () => {
+          const card = track.firstElementChild;
+          return card.offsetWidth + 16; // largura do card + gap (1rem = 16px)
+        };
+
+        const scrollNext = () => {
+          // Se chegou ao fim, volta pro inicio
+          if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 10) {
+            track.scrollTo({ left: 0, behavior: 'smooth' });
+          } else {
+            track.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+          }
+        };
+
+        const scrollPrev = () => {
+          // Se está no inicio, vai pro final
+          if (track.scrollLeft <= 0) {
+            track.scrollTo({ left: track.scrollWidth, behavior: 'smooth' });
+          } else {
+            track.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+          }
+        };
+
+        nextBtn.addEventListener('click', () => {
+          scrollNext();
+          resetAutoPlay();
+        });
+
+        prevBtn.addEventListener('click', () => {
+          scrollPrev();
+          resetAutoPlay();
+        });
+
+        const startAutoPlay = () => {
+          autoPlayInterval = setInterval(scrollNext, 3000);
+        };
+
+        const resetAutoPlay = () => {
+          clearInterval(autoPlayInterval);
+          startAutoPlay();
+        };
+
+        // Pausa no touch ou mouse em cima
+        track.addEventListener('touchstart', () => clearInterval(autoPlayInterval), { passive: true });
+        track.addEventListener('touchend', startAutoPlay);
+        track.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
+        track.addEventListener('mouseleave', startAutoPlay);
+
+        startAutoPlay();
+      });
     </script>
   </body>
 </html>
