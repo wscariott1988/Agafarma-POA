@@ -428,13 +428,20 @@
         });
 
         const startAutoPlay = () => {
-          autoPlayInterval = setInterval(scrollNext, 3000);
+          // No mobile (largura < 768px) roda a cada 5 segundos. No desktop, mantém 3 segundos.
+          const intervalTime = window.innerWidth < 768 ? 5000 : 3000;
+          autoPlayInterval = setInterval(scrollNext, intervalTime);
         };
 
         const resetAutoPlay = () => {
           clearInterval(autoPlayInterval);
           startAutoPlay();
         };
+
+        // Atualiza o tempo caso a tela mude de tamanho
+        window.addEventListener('resize', () => {
+           resetAutoPlay();
+        });
 
         // Pausa no touch ou mouse em cima
         track.addEventListener('touchstart', () => clearInterval(autoPlayInterval), { passive: true });
