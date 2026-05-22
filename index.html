@@ -647,39 +647,6 @@
       startAutoPlay();
     });
   </script>
-  <!-- GTM Lazy Load Script -->
-  <script>
-    (function () {
-      let gtmLoaded = false;
-      const loadGTM = () => {
-        if (gtmLoaded) return;
-        gtmLoaded = true;
-        // Remove event listeners
-        window.removeEventListener('scroll', loadGTM);
-        window.removeEventListener('mousemove', loadGTM);
-        window.removeEventListener('touchstart', loadGTM);
-        
-        // Google Tag Manager Script
-        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-        })(window,document,'script','dataLayer','GTM-K3GVBTX8');
-      };
-      
-      // Load GTM on user interaction
-      window.addEventListener('scroll', loadGTM, { passive: true });
-      window.addEventListener('mousemove', loadGTM, { passive: true });
-      window.addEventListener('touchstart', loadGTM, { passive: true });
-      
-      // Fallback: Load GTM after 3.5 seconds if no interaction
-      setTimeout(loadGTM, 3500);
-    })();
-  </script>
 </body>
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K3GVBTX8" height="0" width="0"
-    style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
 
 </html>
